@@ -118,8 +118,9 @@ func CleanMemorySize(size string) string {
 	size16GB := regexp.MustCompile("16384")
 	size32GB := regexp.MustCompile("(28672|32768)")
 	size64GB := regexp.MustCompile("(60160|65536)")
-	size128GB := regexp.MustCompile("131072")
+	size128GB := regexp.MustCompile("(124928|131072)")
 	size256GB := regexp.MustCompile("240640")
+	size512GB := regexp.MustCompile("499712")
 	if size16GB.MatchString(size) {
 		newsize = size16GB.ReplaceAllString(size, "16GB")
 	} else if size32GB.MatchString(size) {
@@ -130,7 +131,9 @@ func CleanMemorySize(size string) string {
 		newsize = size128GB.ReplaceAllString(size, "128GB")
 	} else if size256GB.MatchString(size) {
 		newsize = size256GB.ReplaceAllString(size, "256GB")
-	} else {
+	} else if size512GB.MatchString(size) {
+		newsize = size512GB.ReplaceAllString(size, "512GB")
+	}else {
 		newsize=size
 	}
 	return newsize
