@@ -74,7 +74,7 @@ func (cmd *Worker) Run() *bufio.Scanner {
 	return (result)
 }
 
-func cleanSize(size string) string {
+func CleanSize(size string) string {
 	num, err := strconv.Atoi(size)
 	check("Clean size: ", err)
 	var newsize int
@@ -112,7 +112,7 @@ func cleanSize(size string) string {
 	return strconv.Itoa(newsize)
 }
 
-func cleanMemorySize(size string) string {
+func CleanMemorySize(size string) string {
 	var newsize string
 
 	size16GB := regexp.MustCompile("16384")
@@ -136,7 +136,7 @@ func cleanMemorySize(size string) string {
 	return newsize
 }
 
-func cleanSpeed(speed string) string {
+func CleanSpeed(speed string) string {
 	var newspeed string
 	speed15k := regexp.MustCompile("15000")
 	speed10k := regexp.MustCompile("10000")
